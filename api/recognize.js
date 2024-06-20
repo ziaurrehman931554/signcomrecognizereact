@@ -1,6 +1,6 @@
 const express = require('express');
 const multer = require('multer');
-const { GestureRecognizer, FilesetResolver } = require('@mediapipe/tasks-vision');
+const { GestureRecognizer, FilesetResolver } = require('https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3');
 const fs = require('fs');
 const path = require('path');
 
@@ -10,7 +10,7 @@ const upload = multer({ dest: 'uploads/' });
 let gestureRecognizer;
 
 const initializeGestureRecognizer = async () => {
-  const vision = await FilesetResolver.forVisionTasks('./wasm');
+  const vision = await FilesetResolver.forVisionTasks('https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3/wasm');
   gestureRecognizer = await GestureRecognizer.createFromOptions(vision, {
     baseOptions: {
       modelAssetPath: path.join(__dirname, './model/gesture_recognizer.task'),
